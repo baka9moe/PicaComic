@@ -1,0 +1,16 @@
+name: Build Win
+run-name: Build Win
+on:
+  workflow_dispatch: {}
+jobs:
+  main:
+    runs-on: windows-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          architecture: x64
+      - run: flutter build windows --release
